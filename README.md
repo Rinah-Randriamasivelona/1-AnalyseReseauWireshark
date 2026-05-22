@@ -47,9 +47,36 @@ Acceptation de la connexion par le serveur, analyse du drapeau SYN-ACK (0x012) e
 Confirmation finale du client, validation du drapeau ACK (0x010) et établissement officiel de la connexion TCP avant le démarrage du chiffrement TLSv1.3.
 
 
+III- Description du Module : Analyse ICMP (Ping Google)
+
+Ce module présente mon étude pratique du protocole ICMP (Internet Control Message Protocol) réalisée sous Kali Linux à travers une communication avec les serveurs Google via la commande `ping`. L'objectif est de comprendre le fonctionnement des messages ICMP Echo Request et Echo Reply ainsi que l’analyse de la connectivité réseau.
+
+Structure des Fichiers
+`README.md` : Présentation globale du projet.
+`icmp/` : Dossier contenant les livrables de l'exercice.
+- `analyse-ping-google.pcapng` : Capture brute du trafic réseau ICMP.
+- `capt1-icmp.jpg` et `capt2-icmp.jpg` : Captures d'écran ciblées de l’interface Wireshark.
+- `capt1-icmp.odt` et `capt2-icmp.odt` : Rapports détaillés rédigés sous LibreOffice présentant l’analyse des paquets ICMP.
+
+Environnement Technique
+- Système d'exploitation : Kali Linux
+- Logiciel d'analyse : Wireshark
+- Protocole étudié : ICMP
+
+Éléments Analysés dans cet Exercice
+
+1. Analyse du paquet ICMP Echo Request (Ligne 19)
+Identification de l’adresse IP source et destination, analyse du message ICMP de type Echo Request ainsi que du temps de réponse réseau.
+
+2. Analyse du paquet ICMP Echo Reply (Ligne 20)
+Étude de la réponse automatique du serveur distant, analyse du message ICMP Echo Reply et vérification de la connectivité réseau.
+
+
+
+
 Auteur
 
 Projet personnel réalisé dans le cadre du développement de mes compétences en réseaux et cybersécurité.
 
-Rina Randriamasivelona
+Rinah Randriamasivelona
 
