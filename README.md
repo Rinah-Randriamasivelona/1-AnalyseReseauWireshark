@@ -1,82 +1,115 @@
-Projet 1 : Analyse de Trafic Réseau & Audit de Protocoles
+# Projet 1 — Analyse de Trafic Réseau & Audit de Protocoles
 
-I- Description du Module : Analyse DNS
-Ce module présente ma première étude pratique du protocole DNS (Domain Name System) réalisée sous Kali Linux. L'objectif est de valider les concepts théoriques en analysant la structure et le comportement des requêtes et des réponses DNS.
+Projet personnel réalisé dans le cadre du développement de mes
+compétences en réseaux et cybersécurité.
 
-Structure des Fichiers
-   `README.md` : Présentation globale du projet.
-    `dns/` : Dossier contenant les livrables de l'exercice.
-       `exo1-capt1.jpg` & `exo1-capt2.jpg` : Captures d'écran ciblées de l'interface Wireshark.
-       `exo1-capt1.odt` & `exo1-capt2.odt` : Rapports détaillés rédigés sous LibreOffice présentant l’analyse des paquets DNS.
-
-Environnement Technique
-*   Système d'exploitation : Kali Linux
-*   Logiciel d'analyse : Wireshark
-*   Protocole étudié : DNS (Port UDP/53)
-
-Éléments Analysés dans cet Exercice
-1.  Requête DNS (Query) : Identification du domaine recherché et vérification du type de requête
-2.  Réponse DNS (Response) : Analyse de la réponse du serveur, vérification de l'adresse IP retournée et étude des champs d'autorité.
-
-
-II- Description du Module : Analyse du Handshake TCP (HTTPS - Wikipedia)
-
-Ce module présente mon étude pratique du protocole TCP (Transmission Control Protocol) réalisée sous Kali Linux lors d'une connexion sécurisée vers Wikipedia. L'objectif est de valider les concepts théoriques du Three-Way Handshake en analysant la structure des drapeaux (flags) TCP ainsi que le comportement des paquets réseau.
-
-Structure des Fichiers
-`README.md` : Présentation globale du projet.
-`tcp/` : Dossier contenant les livrables de l'exercice.
-- `analyser-wikipedia.org.pcapng` : Capture brute du trafic réseau.
-- `capt1-tcp-handshake.jpg`, `capt2-tcp-SYN-ACK.jpg` et `capt3-tcp-ACK.jpg` : Captures d'écran ciblées de l'interface Wireshark.
-- `capt1-tcp-handshake.odt`, `capt2-tcp-SYN-ACK.odt` et `capt3-tcp-ACK.odt` : Rapports détaillés rédigés sous LibreOffice présentant l’analyse de chaque étape du handshake TCP.
-
-Environnement Technique
-- Système d'exploitation : Kali Linux
-- Logiciel d'analyse : Wireshark
-- Protocole étudié : TCP / HTTPS (Port 443)
-
-Éléments Analysés dans cet Exercice
-
-1. Étape 1 : Paquet [SYN] (Ligne 228)
-Demande de connexion initiale du client, analyse du drapeau SYN (0x002) et initialisation du numéro de séquence TCP.
-
-2. Étape 2 : Paquet [SYN, ACK] (Ligne 232)
-Acceptation de la connexion par le serveur, analyse du drapeau SYN-ACK (0x012) et observation du temps aller-retour (RTT).
-
-3. Étape 3 : Paquet [ACK] (Ligne 251)
-Confirmation finale du client, validation du drapeau ACK (0x010) et établissement officiel de la connexion TCP avant le démarrage du chiffrement TLSv1.3.
-
-
-III- Description du Module : Analyse ICMP (Ping Google)
-
-Ce module présente mon étude pratique du protocole ICMP (Internet Control Message Protocol) réalisée sous Kali Linux à travers une communication avec les serveurs Google via la commande `ping`. L'objectif est de comprendre le fonctionnement des messages ICMP Echo Request et Echo Reply ainsi que l’analyse de la connectivité réseau.
-
-Structure des Fichiers
-`README.md` : Présentation globale du projet.
-`icmp/` : Dossier contenant les livrables de l'exercice.
-- `analyse-ping-google.pcapng` : Capture brute du trafic réseau ICMP.
-- `capt1-icmp.jpg` et `capt2-icmp.jpg` : Captures d'écran ciblées de l’interface Wireshark.
-- `capt1-icmp.odt` et `capt2-icmp.odt` : Rapports détaillés rédigés sous LibreOffice présentant l’analyse des paquets ICMP.
-
-Environnement Technique
-- Système d'exploitation : Kali Linux
-- Logiciel d'analyse : Wireshark
-- Protocole étudié : ICMP
-
-Éléments Analysés dans cet Exercice
-
-1. Analyse du paquet ICMP Echo Request (Ligne 19)
-Identification de l’adresse IP source et destination, analyse du message ICMP de type Echo Request ainsi que du temps de réponse réseau.
-
-2. Analyse du paquet ICMP Echo Reply (Ligne 20)
-Étude de la réponse automatique du serveur distant, analyse du message ICMP Echo Reply et vérification de la connectivité réseau.
+Système : Kali Linux
+Outil : Wireshark
+Niveau : Junior — Infrastructure & Cybersécurité
 
 
 
+## Protocoles analysés
 
-Auteur
+| Protocole | Dossier | Port | Description |
+|-----------|---------|------|-------------|
+| DNS | dns/ | UDP/53 | Résolution de noms de domaine |
+| TCP | tcp/ | TCP/443 | Three-Way Handshake HTTPS Wikipedia |
+| ICMP | icmp/ | — | Ping Google — Echo Request/Reply |
+| UDP | udp/ | UDP/53 | Transport sans connexion — DNS sur UDP |
 
-Projet personnel réalisé dans le cadre du développement de mes compétences en réseaux et cybersécurité.
+
+
+## I — Module DNS
+
+Analyse du protocole DNS sous Wireshark.
+Étude des requêtes et réponses DNS, types A et AAAA,
+résolution de noms vers adresses IP.
+
+Fichiers :
+- dns/exo1-capt1.jpg — capture requête DNS
+- dns/exo1-capt2.jpg — capture réponse DNS
+- dns/exo1-capt1.odt — rapport requête
+- dns/exo1-capt2.odt — rapport réponse
+
+Éléments analysés :
+1. Requête DNS — domaine recherché, type de requête
+2. Réponse DNS — adresse IP retournée, champs d'autorité
+
+
+
+## II — Module TCP
+
+Analyse du Three-Way Handshake TCP lors d'une connexion
+HTTPS vers Wikipedia.
+
+Fichiers :
+- tcp/analyser-wikipedia.org.pcapng — capture brute
+- tcp/capt1-tcp-handshake.jpg — vue globale handshake
+- tcp/capt2-tcp-SYN-ACK.jpg — étape SYN-ACK
+- tcp/capt3-tcp-ACK.jpg — étape ACK finale
+- tcp/capt1-tcp-handshake.odt — rapport SYN
+- tcp/capt2-tcp-SYN-ACK.odt — rapport SYN-ACK
+- tcp/capt3-tcp-ACK.odt — rapport ACK
+
+Éléments analysés :
+1. Paquet SYN (ligne 228) — demande de connexion client
+2. Paquet SYN-ACK (ligne 232) — acceptation serveur
+3. Paquet ACK (ligne 251) — confirmation client, connexion établie
+
+
+
+## III — Module ICMP
+
+Analyse du protocole ICMP via la commande ping vers Google.
+
+Fichiers :
+- icmp/analyse-ping-google.pcapng — capture brute
+- icmp/capt1-icmp.jpg — Echo Request
+- icmp/capt2-icmp.jpg — Echo Reply
+- icmp/capt1-icmp.odt — rapport Echo Request
+- icmp/capt2-icmp.odt — rapport Echo Reply
+
+Éléments analysés :
+1. Echo Request (ligne 19) — ping envoyé vers Google
+2. Echo Reply (ligne 20) — réponse automatique du serveur
+
+
+
+## IV — Module UDP
+
+Analyse du protocole UDP en capturant des requêtes DNS
+générées depuis le terminal avec les commandes :
+
+    nslookup google.com
+    dig facebook.com
+    dig wikipedia.org
+
+Six paquets analysés (244 à 249) — trois requêtes et
+trois réponses DNS transportées par UDP.
+
+Fichiers :
+- udp/analyse-udp.pcapng — capture brute
+- udp/rapport-udp.odt — rapport complet fusionné
+- udp/capt1-terminal-udp.jpg — terminal avec les commandes
+- udp/capt-paquet-244.jpg — requête DNS Google
+- udp/capt-paquet-245.jpg — réponse DNS Google
+- udp/capt-paquet-246.jpg — requête DNS Facebook
+- udp/capt-paquet-247.jpg — réponse DNS Facebook
+- udp/capt-paquet-248.jpg — requête DNS Wikipedia
+- udp/capt-paquet-249.jpg — réponse DNS Wikipedia
+
+Éléments analysés :
+1. Paquet 244 — requête UDP/DNS Google (type AAAA - IPv6)
+2. Paquet 245 — réponse UDP/DNS Google
+3. Paquet 246 — requête UDP/DNS Facebook (type A - IPv4)
+4. Paquet 247 — réponse UDP/DNS Facebook
+5. Paquet 248 — requête UDP/DNS Wikipedia (type A - IPv4)
+6. Paquet 249 — réponse UDP/DNS Wikipedia
+
+
+
+## Auteur
 
 Rinah Randriamasivelona
-
+Projet personnel  Infrastructure & Cybersécurité
