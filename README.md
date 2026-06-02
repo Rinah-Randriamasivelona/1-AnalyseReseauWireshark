@@ -14,9 +14,10 @@ Niveau : Junior — Infrastructure & Cybersécurité
 | Protocole | Dossier | Port | Description |
 |-----------|---------|------|-------------|
 | DNS | dns/ | UDP/53 | Résolution de noms de domaine |
-| TCP | tcp/ | TCP/443 | Three-Way Handshake HTTPS Wikipedia |
+| TCP | tcp/ | TCP | Three-Way Handshake vers Wikipedia |
 | ICMP | icmp/ | — | Ping Google — Echo Request/Reply |
 | UDP | udp/ | UDP/53 | Transport sans connexion — DNS sur UDP |
+| HTTP | http/ | TCP/80 | Requêtes et réponses HTTP en clair |
 
 
 
@@ -109,7 +110,47 @@ Fichiers :
 
 
 
+## V — Module HTTP
+
+Analyse du protocole HTTP en capturant du trafic en clair
+généré depuis le terminal avec les commandes :
+
+    curl http://example.com
+    curl http://neverssl.com
+    curl http://httpforever.com
+
+Six paquets analysés (31, 35, 53, 55, 67, 71) — trois requêtes
+GET et trois réponses 200 OK sur trois sites différents.
+
+Fichiers :
+- http/analyse-http.pcapng — capture brute
+- http/rapport.pdf — rapport complet
+- http/terminal.jpg — terminal avec les commandes curl
+- http/capt1.jpg — requête GET example.com (paquet 31)
+- http/capt2.jpg — réponse 200 OK example.com (paquet 35)
+- http/capt3.jpg — requête GET neverssl.com (paquet 53)
+- http/capt4.jpg — réponse 200 OK neverssl.com (paquet 55)
+- http/capt5.jpg — requête GET httpforever.com (paquet 67)
+- http/capt6.jpg — réponse 200 OK httpforever.com (paquet 71)
+
+Éléments analysés :
+1. Paquet 31 — requête GET example.com, User-Agent curl/8.15.0
+2. Paquet 35 — réponse 200 OK, Server cloudflare, HTML 528 octets
+3. Paquet 53 — requête GET neverssl.com, flags TCP PSH ACK
+4. Paquet 55 — réponse 200 OK, Server Apache/2.4.66, HTML 3961 octets
+5. Paquet 67 — requête GET httpforever.com, Connection keep-alive
+6. Paquet 71 — réponse 200 OK, Server nginx/1.18.0 Ubuntu, HTML 5124 octets
+
+Points clés observés :
+- Tout le trafic HTTP circule en clair et est lisible dans Wireshark
+- User-Agent révèle l'outil utilisé sur le réseau
+- Server header révèle la version du logiciel serveur (banner grabbing)
+- HTTP repose obligatoirement sur TCP en dessous
+- HTTPS avec TLS chiffre tout ce trafic et le rend illisible
+
+
+
 ## Auteur
 
 Rinah Randriamasivelona
-Projet personnel  Infrastructure & Cybersécurité
+Projet personnel — Infrastructure & Cybersécurité
